@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Amigo de Mierda 🎉 - Juego Móvil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <!-- Fuente divertida -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container" role="main" aria-label="Juego Amigo de Mierda">
+    <h1>Amigo de Mierda 🎉</h1>
+
+    <!-- Panel inicial para agregar jugadores -->
+    <section id="setup-section" aria-label="Agregar jugadores">
+      <div class="name-input-group">
+        <input
+          type="text"
+          id="name-input"
+          placeholder="Nombre del jugador..."
+          maxlength="16"
+          autocomplete="off"
+          aria-label="Nombre del jugador"
+        />
+        <button id="add-name-btn" aria-label="Agregar jugador" disabled>Agregar</button>
+      </div>
+      <ul id="player-list" aria-live="polite" aria-relevant="additions removals"></ul>
+      <button id="start-btn" disabled aria-label="Iniciar juego">Iniciar Juego</button>
+    </section>
+
+    <!-- Panel juego principal -->
+    <section id="game-section" aria-label="Juego en progreso" style="display:none;">
+      <div class="scoreboard" aria-live="polite" aria-label="Marcador de puntos"></div>
+      <div id="turn-indicator" aria-live="assertive" aria-atomic="true"></div>
+      <article id="card-area" role="region" aria-live="polite" aria-atomic="true" tabindex="0"></article>
+
+      <!-- Controles generales del juego -->
+      <nav id="game-controls" aria-label="Controles del juego">
+        <button class="btn-primary" id="edit-points-btn" type="button">Editar puntos</button>
+        <button class="btn-primary" id="reset-btn" type="button">Reiniciar con jugadores</button>
+        <button class="btn-primary" id="finish-btn" type="button">Finalizar juego</button>
+      </nav>
+    </section>
+
+    <!-- Panel edición puntos -->
+    <section id="edit-section" aria-label="Edición manual de puntos" style="display:none;">
+      <h2>Editar puntos de jugadores</h2>
+      <div id="edit-list" tabindex="0"></div>
+      <div class="edit-confirm-btn-group">
+        <button class="btn-primary" id="confirm-edit-btn" type="button">Guardar cambios</button>
+        <button class="btn-primary" id="cancel-edit-btn" type="button">Cancelar</button>
+      </div>
+    </section>
+
+    <!-- Panel final -->
+    <section id="fin-section" aria-label="Resultados del juego" style="display:none;">
+      <p id="fin-msg" role="alert" aria-live="assertive"></p>
+      <div id="fin-ranking" aria-label="Ranking final"></div>
+      <button id="restart-btn" class="btn-secondary" type="button" aria-label="Reiniciar juego">Nueva partida</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

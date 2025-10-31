@@ -1,0 +1,416 @@
+/* Reset y estilo base mobile-first */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  background-image: url('./img/fondo.jpeg');
+  font-family: 'Poppins', Arial, sans-serif;
+  background-size: cover;        /* La imagen cubre todo el fondo */
+  background-repeat: no-repeat;  /* No se repite */
+  background-position: center;   /* Centrada */
+  background-attachment: fixed;  /* Fijo al viewport, opcional */
+  color: #102a53;
+  padding: 16px 12px 70px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* ...otros estilos que necesitas... */
+}
+.container {
+  max-width: 430px;
+  width: 100%;
+  background: #f8fafd; /* blanco azulado muy claro */
+  border-radius: 24px;
+  box-shadow: 0 5px 25px rgba(16, 42, 83, 0.2); /* sombra azul marino translúcida */
+  padding: 24px 20px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  color: #001f4d; /* azul marino oscuro */
+  text-shadow: 1px 1px 3px #768baaaa; /* sombra suave gris azulado */
+  user-select: none;
+}
+/* --- Sección agregar jugadores --- */
+#setup-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.name-input-group {
+  display: flex;
+  gap: 10px;
+}
+.name-input-group input {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding: 0.74em 1em;
+  border-radius: 12px;
+  border: 2px solid #8ba4c1; /* azul grisáceo claro */
+  outline-offset: 2px;
+  outline-color: #001f4d88; /* azul marino con opacidad */
+  transition: border-color 0.3s;
+}
+.name-input-group input:focus {
+  border-color: #001f4d; /* azul marino oscuro */
+}
+.name-input-group button {
+  background-color: #2a4d8f; /* azul marino intenso */
+  border: none;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-weight: 700;
+  color: #cfdffc; /* celeste claro */
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+.name-input-group button:disabled {
+  background-color: #aebdd6; /* azul grisáceo desaturado */
+  cursor: default;
+  color: #5a6c87; /* azul desaturado oscuro */
+}
+.name-input-group button:hover:not(:disabled) {
+  background-color: #1b3260; /* azul marino saturado oscuro */
+  color: white;
+}
+#player-list {
+  list-style: none;
+  background-color: #dbe3f0; /* celeste muy pálido */
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 38px;
+  font-size: 1.1rem;
+  color: #1c2d4a; /* azul marino pálido */
+  user-select: none;
+}
+#player-list li {
+  background-color: #2a4d8fcc; /* azul marino translúcido */
+  padding: 6px 12px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 70px;
+  color: #cfdffc;
+}
+#player-list li button.remove-player {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #bf3b4fdd; /* rojo suave combinado */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 1;
+  user-select: none;
+  transition: color 0.25s;
+}
+#player-list li button.remove-player:hover {
+  color: #9f2a3cdd;
+}
+#start-btn {
+  background-color: #001f4d; /* azul marino oscuro */
+  border: none;
+  border-radius: 16px;
+  padding: 14px 0;
+  color: #cfdffc; /* celeste claro */
+  font-size: 1.25rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
+}
+#start-btn:disabled {
+  background-color: #7d8fb4; /* azul pálido desaturado */
+  cursor: not-allowed;
+}
+#start-btn:hover:not(:disabled) {
+  background-color: #112a65; /* azul marino más saturado */
+}
+/* --- Juego principal --- */
+#game-section {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+}
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  background-color: #e3ecff; /* celeste muy suave */
+  border-radius: 15px;
+  padding: 12px 0;
+  box-shadow: 0 3px 10px #1f3b6d6e;
+  user-select: none;
+}
+.score-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #194477; /* azul marino medio */
+  position: relative;
+}
+.score-player.current::after {
+  content: "▶";
+  position: absolute;
+  top: 0;
+  right: -20px;
+  font-size: 1.4rem;
+  color: #001f4d; /* azul marino oscuro */
+  user-select: none;
+  animation: pulseArrow 1s ease-in-out infinite;
+}
+@keyframes pulseArrow {
+  0%, 100% { opacity: 1; transform: translateX(0);}
+  50% { opacity: 0.4; transform: translateX(4px);}
+}
+.score-player span.points {
+  margin-top: 6px;
+  color: #001f4d; /* azul marino oscuro */
+  font-size: 1.3rem;
+}
+#turn-indicator {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #24457a; /* azul marino más suave */
+  user-select: none;
+}
+#card-area {
+  min-height: 170px;
+  border-radius: 24px;
+  box-shadow: 0 5px 20px #2f4a7a7a; /* sombra azul marino translúcida */
+  overflow-wrap: break-word;
+  font-weight: 700;
+  user-select: none;
+  /* animación entrada */
+  opacity: 0;
+  transform: translateY(48px) scale(0.8) rotate(-6deg);
+  animation: cardIn 0.7s forwards cubic-bezier(0.44,1.7,0.58,0.93);
+  background: #f3f7ff; /* celeste pálido */
+  color: #0a1c3f; /* azul muy oscuro para texto */
+  padding: 20px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.25rem;
+  gap: 8px;
+  border: 4px solid transparent;
+}
+@keyframes cardIn {
+  0% {
+    opacity: 0;
+    transform: translateY(48px) scale(0.8) rotate(-6deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-12px) scale(1.05) rotate(4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+.card-type-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  width: 100%;
+  color: #001f4d;
+}
+.card-text {
+  font-weight: 700;
+  color: #24457a;
+}
+.btn-group {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+.btn-action {
+  flex: 1;
+  border: none;
+  border-radius: 16px;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.09);
+}
+.btn-success {
+  background-color: #1a5f2a; /* verde oscuro */
+  color: #cdeacd; /* verde claro */
+}
+.btn-success:hover {
+  background-color: #144020;
+  color: white;
+}
+.btn-fail {
+  background-color: #dbb700; /* amarillo oro oscuro */
+  color: #4b3b0f; /* amarillo oscuro */
+}
+.btn-fail:hover {
+  background-color: #c2aa00;
+  color: #2c2100;
+}
+/* Colores para cada tipo de tarjeta */
+.card-verde {
+  border-color: #1a5f2a;
+  background: linear-gradient(130deg, #d4e7d9 70%, #1a5f2a 100%);
+}
+.card-amarilla {
+  border-color: #dbb700;
+  background: linear-gradient(130deg, #fff9d1 83%, #ffee49 100%);
+}
+.card-roja {
+  border-color: #254273; 
+  background: linear-gradient(130deg, #d5ddee 70%, #254273 100%);
+}
+.card-bonus {
+  border-color: #001f4d;
+  background: linear-gradient(120deg, #bac7e7 80%, #001f4d 100%);
+}
+/* Control manual de puntos y botones generales */
+.btn-primary, .btn-secondary {
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  padding: 14px 0;
+  cursor: pointer;
+  font-size: 1.15rem;
+  user-select: none;
+  transition: background-color 0.3s;
+  min-width: 100px;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: #001f4d;
+  color: white;
+}
+.btn-primary:hover {
+  background: #324f86;
+}
+.btn-secondary {
+  background: #324f86;
+  color: white;
+}
+.btn-secondary:hover {
+  background: #001f4d;
+}
+/* Panel edición puntos */
+#edit-section, #fin-section {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background: #e9ecfa;
+  border-radius: 20px;
+  padding: 20px 20px 32px;
+  box-shadow: 0 5px 25px rgba(16, 42, 83, 0.3);
+  user-select: none;
+}
+#edit-section h2, #fin-section h2 {
+  color: #001f4d;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+}
+#edit-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.edit-player-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.edit-player-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-basis: 40%;
+  color: #001f4d;
+}
+.edit-points-value {
+  flex-basis: 20%;
+  font-size: 1.1rem;
+  text-align: center;
+  font-weight: 700;
+  color: #254273;
+}
+.edit-btn-group {
+  display: flex;
+  gap: 8px;
+  flex-basis: 40%;
+  justify-content: flex-end;
+}
+.edit-btn-small {
+  font-size: 1.5rem;
+  font-weight: 900;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: #001f4d;
+  color: white;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+.edit-btn-small:hover {
+  background: #324f86;
+}
+.edit-confirm-btn-group {
+  margin-top: 18px;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+}
+/* Ranking pantalla final */
+#fin-msg {
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: #001f4d;
+  margin-bottom: 18px;
+  text-align: center;
+}
+#fin-ranking {
+  width: 100%;
+  user-select: none;
+}
+#fin-ranking ol {
+  padding-left: 1.4em;
+  color: #102a53;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+#fin-ranking li {
+  margin-bottom: 8px;
+}

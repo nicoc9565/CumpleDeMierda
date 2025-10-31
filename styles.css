@@ -72,16 +72,43 @@
 .sticker-pasosProhibidos  { top: 9vw; right: 10vw; width: 12vw; max-width: 95px; min-width: 55px;}
 .sticker-facha            { top: 18vw; right: 1vw; width: 12vw; max-width: 95px; min-width: 55px;}
 
+.sticker-bebe1 {
+  position: absolute;
+  top: 25vw;
+  left: 10vw;
+  width: 12vw;
+  max-width: 95px;
+  min-width: 55px;
+  z-index: 5;
+  transform: rotate(-15deg);
+}
+
+.sticker-bebe2 {
+  position: absolute;
+  top: 23vw;
+  left: 53vw;
+  width: 8vw;
+  max-width: 95px;
+  min-width: 55px;
+  z-index: 5;
+}
 
 .bebe-anim-float {
   position: absolute;
   z-index: 99;
+  animation: flotar 3s infinite alternate;
   width: 130px;
   filter: drop-shadow(0 6px 18px #001f4d25);
   opacity: 0.89;
   cursor: grab;
   pointer-events: auto;
   transition: left 0.3s, right 0.3s, top 0.3s, bottom 0.3s, box-shadow 0.2s;
+}
+
+/* Ejemplo de animación simple */
+@keyframes flotar {
+  from { transform: translateY(0px);}
+  to   { transform: translateY(-40px);}
 }
 
 .bebe-anim-dragging {

@@ -4,6 +4,105 @@
   margin: 0;
   padding: 0;
 }
+.sticker {
+  position: absolute;
+  z-index: 14;
+  pointer-events: none; /* ¡Nunca bloquean clics de juego! */
+  opacity: 0.96;
+}
+.birthday-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: -10px;
+  gap: 1px;
+  /* Puedes ponerle padding-top si deseas separarlo más */
+}
+.sticker-header {
+  display: block;
+  max-width: 43vw;
+  object-fit: contain;
+}
+.sticker-header-title {
+  width: 36vw;
+  max-width: 340px;
+}
+.sticker-header-globos30 {
+  width: 15vw;
+  max-width: 145px;
+  margin-top: -40px;
+}
+
+@media (max-width: 520px){
+  .sticker-header-title { width: 85vw; max-width: 97vw;}
+  .sticker-header-globos30 { width: 55vw; max-width: 75vw;}
+}
+
+.sticker {
+  position: absolute;
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0.98;
+  user-select: none;
+}
+
+/* Ubica cada sticker usando vw/vh para asegurar adaptación a pantallas chicas */
+
+/* Banner principal */
+.sticker-title      { top: 60vw; left: 15vw; width: 79vw; max-width: 370px; }
+
+/* Bola disco esquina superior izq */
+.sticker-bola       { top: -4vw; left: -4vw; width: 25vw; min-width: 48px; }
+
+/* Globo 30 centro arriba */
+.sticker-globos30   { top: 10vw; left: 50vw; transform: translateX(-55%); width: 30vw; min-width: 90px; max-width: 170px; }
+
+/* Labios y scorpio abajo izquierda */
+.sticker-labios     { bottom: 6vw; left: 4vw; width: 14vw; min-width: 39px; transform: rotate(30deg);}
+.sticker-scorpio    { bottom: 9vw; left: 3vw; width: 20vw; min-width: 48px; transform: rotate(20deg);}
+
+/* Corona abajo derecha */
+.sticker-corona     { bottom: 75vw; left: 2vw; width: 15vw; min-width: 30px; transform: rotate(15deg);}
+.sticker-megafono   { top: 38vw; right: 3vw; width: 13vw; min-width: 34px; }
+
+/* Badges vertical, versión escalonada para mobile */
+.sticker-caraOjete        { top: 1vw; right: 1vw; width: 12vw; max-width: 95px; min-width: 55px;}
+.sticker-pasosProhibidos  { top: 9vw; right: 10vw; width: 12vw; max-width: 95px; min-width: 55px;}
+.sticker-facha            { top: 18vw; right: 1vw; width: 12vw; max-width: 95px; min-width: 55px;}
+
+
+.bebe-anim-float {
+  position: absolute;
+  z-index: 99;
+  width: 130px;
+  filter: drop-shadow(0 6px 18px #001f4d25);
+  opacity: 0.89;
+  cursor: grab;
+  pointer-events: auto;
+  transition: left 0.3s, right 0.3s, top 0.3s, bottom 0.3s, box-shadow 0.2s;
+}
+
+.bebe-anim-dragging {
+  cursor: grabbing;
+  box-shadow: 0 10px 30px #1976d277;
+  filter: brightness(1.12);
+}
+
+@media (max-width: 700px) {
+  .bebe-anim-float { width: 93px; }
+}
+@media (max-width: 490px) {
+  .bebe-anim-float { width: 79px; }
+}
+
+/* Si quieres mantener la animación flotante cuando no se arrastra */
+@keyframes flotarbebe {
+  0%   { transform: translateY(-7px) scale(1.01) rotate(-5deg);}
+  100% { transform: translateY(12px) scale(1.08) rotate(5deg);}
+}
+
 body {
   min-height: 100vh;
   background-image: url('./img/fondo.jpeg');
@@ -29,13 +128,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-}
-h1 {
-  font-size: 2rem;
-  text-align: center;
-  color: #001f4d; /* azul marino oscuro */
-  text-shadow: 1px 1px 3px #768baaaa; /* sombra suave gris azulado */
-  user-select: none;
 }
 /* --- Sección agregar jugadores --- */
 #setup-section {

@@ -182,7 +182,84 @@ function displayScoreboard() {
     scoreboard.appendChild(div);
   });
 }
+document.querySelectorAll('.bebe-anim-float').forEach((img)=>{
+  makeDraggableImageSelector(img);
+});
+function makeDraggableImageSelector(img) {
+  let isDragging = false;
+  let offsetX, offsetY;
 
+  img.addEventListener('mousedown', startDrag);
+  img.addEventListener('touchstart', startDrag, {passive: false});
+
+  function startDrag(e) {
+    isDragging = true;
+    img.classList.add('bebe-anim-dragging');
+    let rect = img.getBoundingClientRect();
+
+    if (e.type === 'mousedown') {
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('mouseup', endDrag);
+    } else if (e.type === 'touchstart') {
+      offsetX = e.touches[0].clientX - rect.left;
+      offsetY = e.touches[0].clientY - rect.top;
+      document.addEventListener('touchmove', drag, {passive: false});
+      document.addEventListener('touchend', endDrag);
+    }
+    e.preventDefault();
+  }
+  function randomizeBebes() {
+  const minPadding = 10; // para que no queden pegados al borde
+  const imgs = document.querySelectorAll('.bebe-anim-float');
+  imgs.forEach(img => {
+    // Calcula el tamaño de la ventana y el tamaño de la imagen
+    const winW = window.innerWidth;
+    const winH = window.innerHeight;
+    const imgW = img.offsetWidth || 70; // fallback si no cargó
+    const imgH = img.offsetHeight || 70;
+
+    // Busca valores random que no pisen el card principal (ajusta según tu estilo!)
+    let left = Math.floor(Math.random() * (winW - imgW - minPadding*2)) + minPadding;
+    let top = Math.floor(Math.random() * (winH - imgH - minPadding*2)) + minPadding;
+
+    img.style.left = left + "px";
+    img.style.top = top + "px";
+    img.style.right = "auto";
+    img.style.bottom = "auto";
+  });
+}
+// Ejecuta al cargar y/o al resize
+window.addEventListener("DOMContentLoaded", randomizeBebes);
+window.addEventListener("resize", randomizeBebes);
+
+  function drag(e) {
+    if (!isDragging) return;
+    let x, y;
+    if (e.type === 'mousemove') {
+      x = e.clientX;
+      y = e.clientY;
+    } else if (e.type === 'touchmove') {
+      x = e.touches[0].clientX;
+      y = e.touches[0].clientY;
+    }
+    img.style.left = (x - offsetX) + 'px';
+    img.style.top = (y - offsetY) + 'px';
+    img.style.right = "auto";
+    img.style.bottom = "auto";
+    e.preventDefault();
+  }
+
+  function endDrag() {
+    isDragging = false;
+    img.classList.remove('bebe-anim-dragging');
+    document.removeEventListener('mousemove', drag);
+    document.removeEventListener('mouseup', endDrag);
+    document.removeEventListener('touchmove', drag);
+    document.removeEventListener('touchend', endDrag);
+  }
+}
 
 // Actualiza indicador con el jugador actual y ronda
 function displayCurrentTurn() {

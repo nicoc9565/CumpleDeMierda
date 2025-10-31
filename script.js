@@ -169,15 +169,20 @@ function shuffleTurnQueue() {
 // Actualiza el marcador con el estado actual y resalta jugador activo
 function displayScoreboard() {
   scoreboard.innerHTML = "";
-  players.forEach(player => {
+  // Ordenar por puntaje de mayor a menor
+  const sortedPlayers = [...players].sort((a, b) => scores[b] - scores[a]);
+  sortedPlayers.forEach(player => {
     const div = document.createElement("div");
     div.className = "score-player";
     if (player === currentPlayer) div.classList.add("current");
-    div.setAttribute("aria-label", `${player}, puntos: ${scores[player]}`);
-    div.innerHTML = `<span>${player}</span><span class="points">${scores[player]}</span>`;
+    div.innerHTML = `
+      <span class="player-name">${player}</span>
+      <span class="points">${scores[player]}</span>
+    `;
     scoreboard.appendChild(div);
   });
 }
+
 
 // Actualiza indicador con el jugador actual y ronda
 function displayCurrentTurn() {

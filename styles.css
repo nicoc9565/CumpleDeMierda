@@ -36,8 +36,8 @@
 }
 
 @media (max-width: 520px){
-  .sticker-header-title { width: 85vw; max-width: 97vw;}
-  .sticker-header-globos30 { width: 55vw; max-width: 75vw;}
+  .sticker-header-title { width: 65vw; max-width: 97vw;}
+  .sticker-header-globos30 { width: 35vw; max-width: 75vw;}
 }
 
 .sticker {
@@ -54,7 +54,7 @@
 .sticker-title      { top: 60vw; left: 15vw; width: 79vw; max-width: 370px; }
 
 /* Bola disco esquina superior izq */
-.sticker-bola       { top: -4vw; left: -4vw; width: 25vw; min-width: 48px; }
+.sticker-bola       { top: -4vw; left: -4vw; width: 35vw; min-width: 48px; }
 
 /* Globo 30 centro arriba */
 .sticker-globos30   { top: 10vw; left: 50vw; transform: translateX(-55%); width: 30vw; min-width: 90px; max-width: 170px; }
@@ -85,10 +85,10 @@
 
 .sticker-bebe2 {
   position: absolute;
-  top: 23vw;
-  left: 53vw;
-  width: 8vw;
-  max-width: 95px;
+  top: 33vw;
+  left: 55vw;
+  width: 13vw;
+  max-width: 125px;
   min-width: 55px;
   z-index: 5;
 }
@@ -105,11 +105,11 @@
   transition: left 0.3s, right 0.3s, top 0.3s, bottom 0.3s, box-shadow 0.2s;
 }
 
-/* Ejemplo de animación simple */
+/* Ejemplo de animación simple 
 @keyframes flotar {
   from { transform: translateY(0px);}
   to   { transform: translateY(-40px);}
-}
+}*/
 
 .bebe-anim-dragging {
   cursor: grabbing;
@@ -117,11 +117,80 @@
   filter: brightness(1.12);
 }
 
-@media (max-width: 700px) {
-  .bebe-anim-float { width: 93px; }
+@media (max-width: 520px) {
+  .sticker-labios {
+    bottom: -50vw;
+    left: -2vw;
+    width: 20vw;
+  }
+  .sticker-scorpio {
+    bottom: -48vw;
+    left: -5vw;
+    width: 35vw;
+  }
+  .sticker-corona {
+    top: 55vw;
+    left: 17vw;
+    width: 13vw;
+  }
+  .sticker-megafono {
+    top: 130vw;
+    right: -1vw;
+    width: 20vw;
+  }
+  
+  .sticker-bebe1 {
+  top: 50vw;
+  left: 3vw;
+  width: 20vw;
+  max-width: 150px;
+  min-width: 55px;
+  z-index: 5;
+  transform: rotate(-10deg);
 }
-@media (max-width: 490px) {
+  .sticker-bebe2 {
+    top: 43vw;
+    left: 58vw;
+    width: 20vw;
+    max-width: 150px;
+    min-width: 55px;
+    z-index: 5;
+  }
   .bebe-anim-float { width: 79px; }
+}
+
+@media (min-width: 521px) and (max-width: 720px) {
+    .sticker-bebe1 {
+      top: 40vw;
+      left: 5vw;
+      width: 20vw;
+    }
+   .sticker-corona {
+    top: 42vw;
+    left: 16vw;
+    width: 13vw;
+  }
+  .sticker-megafono {
+    top: 80vw;
+    right: 2vw;
+    width: 20vw;
+  }
+  .sticker-labios {
+    bottom: -7vw;
+    left: 3vw;
+    width: 20vw;
+  }
+  .sticker-scorpio {
+    bottom: -3vw;
+    left: 1vw;
+    width: 30vw;
+  }
+  .sticker-header-title {
+  width: 55vw;
+ }
+ .sticker-header-globos30 {
+  width: 25vw;
+ }
 }
 
 /* Si quieres mantener la animación flotante cuando no se arrastra */
@@ -462,7 +531,7 @@ body {
 }
 
 /* Responsive: fila en escritorio */
-@media (min-width: 600px) {
+@media (min-width: 720px) {
   #game-controls {
     flex-direction: row;
     justify-content: center;

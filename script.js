@@ -10,17 +10,17 @@ const challenges = {
     "“Modo DJ”: elegir el próximo tema, pero si el grupo no lo aprueba, perdés puntos. ",
     "Si fueras un trago, ¿cuál serías y por qué?",
     "Mostrá el sticker que más usas y actualo.",
+    "Mostrá tu foto de DNI.",
+    "Decí tu “crush famoso” sin dudar.",
     "Describir tu peor ruptura usando solo títulos de canciones."
   ],
   amarilla: [
     "Brindar y mirarse fijamente con alguien, hacerlo reír y el que aguanta la risa gana.",
     "Contar una anécdota vergonzosa de tus 20’s.",
-    "Mostrá tu foto de DNI.",
     "Adivinar el año de una canción vieja.",
     "Inventá un eslogan para la fiesta.",
     "Decí el abecedario al revés (o morís en el intento 😅).",
     "Hacé una pose de yoga mientras brindás.",
-    "Decí tu “crush famoso” sin dudar.",
     "Decí un trabalenguas tres veces rápido.",
     "Memorizá una frase que te digan y repetila al final de la ronda.",
     "Adiviná qué canción tararean.",
@@ -35,22 +35,23 @@ const challenges = {
     "Dejá que otro jugador lea el último mensaje que mandaste (con censura si querés).",
     "Hacé 5 flexiones… pero con tu vaso apoyado en la espalda.",
     "Improvisar un rap sobre los invitados.",
-    "Crear un lema para la fiesta y gritarlo como un político en campaña.",
     "Intercambiar una prenda de ropa con alguna persona.",
     "Llamar a un número desconocido y pedir una pizza."
   ],
   bonus: [
     "Elige quien pierde 5 pts.",
+    "Elige quien suma 5 pts. (No podes sumar vos)",
     "Elije quienes hacen un brindis todos los 20’s. o +30. y suman 5 pts.",
+    "Elije quienes hacen un brindis todos los 20’s. o +30. y restan 5 pts.",
     "“Desafío doble”: elegís a alguien y los dos hacen un reto juntos (Saca otra tarjeta).",
     "Contar tu recuerdo más gracioso o anécdota con el cumpleañero (aunque lo inventes)."
   ],
 };
 const cardTypes = [
-  { key: "verde", title: "🟩 Verde", colorClass: "card-verde", points: 5, prob: 0.4 },
-  { key: "amarilla", title: "🟨 Amarilla", colorClass: "card-amarilla", points: 10, prob: 0.3 },
-  { key: "roja", title: "🟥 Roja", colorClass: "card-roja", points: 15, prob: 0.22 },
-  { key: "bonus", title: "⭐ Bonus", colorClass: "card-bonus", points: 20, prob: 0.08 },
+  { key: "verde", title: "🟩 Verde", colorClass: "card-verde", points: 2, prob: 0.4 },
+  { key: "amarilla", title: "🟨 Amarilla", colorClass: "card-amarilla", points: 4, prob: 0.3 },
+  { key: "roja", title: "🟥 Roja", colorClass: "card-roja", points: 6, prob: 0.22 },
+  { key: "bonus", title: "⭐ Bonus", colorClass: "card-bonus", points: 0, prob: 0.08 },
 ];
 
 // --- Estado y variables ---
@@ -305,11 +306,23 @@ function showNextCard() {
     </div>
   `;
 
-  document.getElementById("btn-fulfilled").onclick = () => {
-    scores[currentPlayer] += card.points;
+document.getElementById("btn-fulfilled").onclick = () => {
+  scores[currentPlayer] += card.points;
+  // ---- NUEVO: chequea si algún jugador llegó a 30 pts ----
+  if (scores[currentPlayer] >= 30) {
+    // Mostrá resultado final y mensaje especial!
+    finSection.style.display = "flex";
+    gameSection.style.display = "none";
+    editSection.style.display = "none";
+    // Mensaje especial por los 30 años
+    finMsg.textContent = `¡${currentPlayer} acaba de llegar a 30 puntos... como los 30 años! 🎉🥳 Fin del juego especial cumpleaños.`;
+    // Ranking y puntaje final
+    showFinalResults();
+  } else {
     advanceTurn();
-  };
-  document.getElementById("btn-notfulfilled").onclick = () => {
+  }
+};
+document.getElementById("btn-notfulfilled").onclick = () => {
     advanceTurn();
   };
 }

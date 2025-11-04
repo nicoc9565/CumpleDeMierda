@@ -17,9 +17,10 @@ const challenges = {
   amarilla: [
     "Brindar y mirarse fijamente con alguien, hacerlo reír y el que aguanta la risa gana.",
     "Contar una anécdota vergonzosa de tus 20’s.",
-    "Adivinar el año de una canción vieja.",
+    "Adivinar el año de una canción.",
     "Inventá un eslogan para la fiesta.",
     "Decí el abecedario al revés (o morís en el intento 😅).",
+    "Mostrá la primer foto de tu galería que encuentres con los ojos cerrados.",
     "Hacé una pose de yoga mientras brindás.",
     "Decí un trabalenguas tres veces rápido.",
     "Memorizá una frase que te digan y repetila al final de la ronda.",

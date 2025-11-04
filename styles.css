@@ -134,7 +134,7 @@
     width: 13vw;
   }
   .sticker-megafono {
-    top: 130vw;
+    top: 120vw;
     right: -1vw;
     width: 20vw;
   }
@@ -575,8 +575,9 @@ body {
 #turn-indicator {
   text-align: center;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   color: #24457a; /* azul marino más suave */
+  text-shadow: 2px 5px 25px rgba(0, 0, 0, 1);
   user-select: none;
 }
 #card-area {

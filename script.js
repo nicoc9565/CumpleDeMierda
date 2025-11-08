@@ -2,7 +2,7 @@
 const challenges = {
   verde: [
     "Sacarte una selfie con alguien que acabás de conocer. ",
-    "Decir tres verdades y una mentira (y que adivinen). ",
+    "Decir dos verdades y una mentira (y que adivinen). ",
     "Contar algo que hacías de chico y hoy te da vergüenza. ",
     "Tomar un trago sin usar las manos. ",
     "Decir algo que harías si volvieras a tener 20. ",
@@ -12,30 +12,25 @@ const challenges = {
     "Mostrá el sticker que más usas y actualo.",
     "Mostrá tu foto de DNI.",
     "Decí tu “crush famoso” sin dudar.",
-    "Describir tu peor ruptura usando solo títulos de canciones."
   ],
   amarilla: [
-    "Brindar y mirarse fijamente con alguien, hacerlo reír y el que aguanta la risa gana.",
     "Contar una anécdota vergonzosa de tus 20’s.",
     "Adivinar el año de una canción.",
-    "Inventá un eslogan para la fiesta.",
     "Decí el abecedario al revés (o morís en el intento 😅).",
     "Mostrá la primer foto de tu galería que encuentres con los ojos cerrados.",
-    "Hacé una pose de yoga mientras brindás.",
+    "Mostrar tu ultimo mensaje de Te amo.",
+    "Mostrá el último chat que tuviste en redes sociales.",
     "Decí un trabalenguas tres veces rápido.",
     "Memorizá una frase que te digan y repetila al final de la ronda.",
     "Adiviná qué canción tararean.",
     "Tenés que hacer reír a alguien en menos de 20 segundos.",
-    "Dejar que otra persona elija el fondo de pantalla de tu celu usalo toda la noche."
   ],
   roja: [
-    "Tomar un shot sin hacer mueca (todos votan si lo lograste).",
-    "Decir una verdad incómoda o responder una pregunta al estilo “verdad o shot”.",
+    "Decir una verdad incómoda o responder una pregunta.",
     "Mostrar una foto vergonzosa de tu galería.",
-    "Inventá una coreografía con una persona elegida al azar.",
-    "Dejá que otro jugador lea el último mensaje que mandaste (con censura si querés).",
+    "Dejá que otro jugador lea el último mensaje que mandaste.",
     "Hacé 5 flexiones… pero con tu vaso apoyado en la espalda.",
-    "Improvisar un rap sobre los invitados.",
+    "Improvisar un rap.",
     "Intercambiar una prenda de ropa con alguna persona.",
     "Llamar a un número desconocido y pedir una pizza."
   ],
@@ -44,8 +39,10 @@ const challenges = {
     "Elige quien suma 5 pts. (No podes sumar vos)",
     "Elije quienes hacen un brindis todos los 20’s. o +30. y suman 5 pts.",
     "Elije quienes hacen un brindis todos los 20’s. o +30. y restan 5 pts.",
+    "Dejar que otra persona elija el fondo de pantalla de tu celu y usalo hasta el final del juego sumaras 5 pts.",
     "“Desafío doble”: elegís a alguien y los dos hacen un reto juntos (Saca otra tarjeta).",
-    "Contar tu recuerdo más gracioso o anécdota con el cumpleañero (aunque lo inventes)."
+    "“Desafío doble”: elegís a alguien de la 'Decada contraria' y los dos hacen un reto juntos (Adivina el nombre de la canción).",
+    "Contar tu recuerdo o anécdota más graciosa con el cumpleañero."
   ],
 };
 const cardTypes = [

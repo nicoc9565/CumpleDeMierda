@@ -12,6 +12,13 @@ const challenges = {
     "Mostrá el sticker que más usas y actualo.",
     "Mostrá tu foto de DNI.",
     "Decí tu “crush famoso” sin dudar.",
+    "Elige una persona y cierran los ojos intentando lograr un brindis. (Los dos suman pts si lo logran).",
+    "Describe tu emoji mas usado. (El que adivina tambien suma pts).",
+    "Nombrá tres cosas que te hacen enojar en menos de 10 segundos.",
+    "Responder preguntas sin decir 'sí' o 'no' por 1 minuto.",
+    "Contá cuál fue tu última Bolu-compra.",
+    "'Modo Reto:' El que derrame algun trago, pierde 5 pts.",
+    "'Modo Reto:' Si alguien dice el nombre del cumpleañero, pierde 1 pts.",
   ],
   amarilla: [
     "Contar una anécdota vergonzosa de tus 20’s.",
@@ -24,6 +31,7 @@ const challenges = {
     "Memorizá una frase que te digan y repetila al final de la ronda.",
     "Adiviná qué canción tararean.",
     "Tenés que hacer reír a alguien en menos de 20 segundos.",
+    "Contar algo que te haga acordar al cumpleañero."
   ],
   roja: [
     "Decir una verdad incómoda o responder una pregunta.",
@@ -32,7 +40,8 @@ const challenges = {
     "Hacé 5 flexiones… pero con tu vaso apoyado en la espalda.",
     "Improvisar un rap.",
     "Intercambiar una prenda de ropa con alguna persona.",
-    "Llamar a un número desconocido y pedir una pizza."
+    "Llamar a un número desconocido y pedir una pizza.",
+    "Dejá que alguien del grupo publique una historia en tu Instagram."
   ],
   bonus: [
     "Elige quien pierde 5 pts.",
@@ -42,13 +51,14 @@ const challenges = {
     "Dejar que otra persona elija el fondo de pantalla de tu celu y usalo hasta el final del juego sumaras 5 pts.",
     "“Desafío doble”: elegís a alguien y los dos hacen un reto juntos (Saca otra tarjeta).",
     "“Desafío doble”: elegís a alguien de la 'Decada contraria' y los dos hacen un reto juntos (Adivina el nombre de la canción).",
-    "Contar tu recuerdo o anécdota más graciosa con el cumpleañero."
+    "Contar tu recuerdo o anécdota más graciosa con el cumpleañero.",
+    "Mostrá tu búsqueda más reciente en Google."
   ],
 };
 const cardTypes = [
   { key: "verde", title: "🟩 Verde", colorClass: "card-verde", points: 2, prob: 0.4 },
-  { key: "amarilla", title: "🟨 Amarilla", colorClass: "card-amarilla", points: 4, prob: 0.3 },
-  { key: "roja", title: "🟥 Roja", colorClass: "card-roja", points: 6, prob: 0.22 },
+  { key: "amarilla", title: "🟨 Amarilla", colorClass: "card-amarilla", points: 3, prob: 0.3 },
+  { key: "roja", title: "🟥 Roja", colorClass: "card-roja", points: 4, prob: 0.22 },
   { key: "bonus", title: "⭐ Bonus", colorClass: "card-bonus", points: 0, prob: 0.08 },
 ];
 
